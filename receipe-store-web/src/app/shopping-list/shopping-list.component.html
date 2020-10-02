@@ -1,1 +1,41 @@
-<p>shopping-list works!</p>
+
+<div class="row">
+  <div class="col-10">
+  
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Name</label>
+          <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Amount</label>
+          <input type="password" class="form-control" id="inputPassword4">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-secondary">Delete</button>
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-primary">Clear</button> 
+        </div>
+      </div>
+      
+    </form>
+  </div>
+</div>
+<br/>
+<hr/>
+
+<div class="row">
+  <div class="col-10">
+    <app-ingredient 
+    *ngFor="let ingredientItem of ingredients"
+    [ingredient]="ingredientItem">
+    </app-ingredient>
+  </div>
+</div>

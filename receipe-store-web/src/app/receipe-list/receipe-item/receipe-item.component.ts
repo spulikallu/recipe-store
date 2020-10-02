@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import {Input } from '@angular/core';
 import { Receipe } from '../receipe.model';
 
@@ -10,7 +10,9 @@ import { Receipe } from '../receipe.model';
 export class ReceipeItemComponent implements OnInit {
   @Input() receipe: Receipe;
   @Output() displayRecipe = new EventEmitter<Receipe>();
-
+  @ViewChild('receipeRow', {static:true}) receipeRowDiv: ElementRef;
+  @ContentChild('recipeRowName', {static:true}) recipeRowNameDiv: ElementRef;
+ 
   constructor() { }
 
   ngOnInit(): void {
@@ -19,6 +21,11 @@ export class ReceipeItemComponent implements OnInit {
   receipeSelected(recipe: Receipe){
     console.log('receipie selected');
     this.displayRecipe.emit(recipe);
+  }
+
+  highlightItem(){
+    this.receipeRowDiv.nativeElement.style.backgroundColor='#f4ffba';
+    this.recipeRowNameDiv.nativeElement.style.backgroundColor='red';
   }
 
 }

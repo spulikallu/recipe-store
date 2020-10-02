@@ -1,21 +1,25 @@
 <div class="row">
   <div class="col-7">
     <ul class="list-group">
-      <app-receipe-item 
-      *ngFor="let receipeItem of recepieList" 
-      [receipe]="receipeItem" 
-      (displayRecipe)="showReceipe($event)"      
-      class="list-group-item"
-      >
+      <app-receipe-item *ngFor="let receipeItem of recepieList" [receipe]="receipeItem"
+        (displayRecipe)="showReceipe($event)" class="list-group-item">
+
+          <div class="col-3" #recipeRowName>
+            {{receipeItem.name}}
+          </div>
+          <div class="col-5">
+            {{receipeItem.desc}}
+          </div>
+          <div class="col-4">
+            <img class="img-thumbnail" src="{{receipeItem.imagePath}}">
+          </div>
+   
       </app-receipe-item>
     </ul>
   </div>
   <div class="col-5">
     <h2>Receipe Details</h2>
-    <app-receipe-detail 
-    *ngIf="selectedReceipe; else infoText"
-    [receipe]="selectedReceipe"
-    >
+    <app-receipe-detail *ngIf="selectedReceipe; else infoText" [receipe]="selectedReceipe">
     </app-receipe-detail>
     <ng-template #infoText>
       No receipe selected

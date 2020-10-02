@@ -1,9 +1,11 @@
 <app-header (featureSelected)="onNavigateTo($event)"></app-header>
 
 
-<br/>
+<br />
 
+<div class="container">
 
+  <app-receipe-list *ngIf="selectedMenu === 'receipe'"></app-receipe-list>
+  <app-shopping-list *ngIf="selectedMenu !== 'receipe'"></app-shopping-list>
 
-<app-receipe-list *ngIf="selectedMenu === 'receipe'"></app-receipe-list>
-<app-shopping-list *ngIf="selectedMenu !== 'receipe'"></app-shopping-list>
+</div>

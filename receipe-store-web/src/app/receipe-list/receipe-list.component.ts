@@ -1,4 +1,15 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { 
+  AfterContentInit, 
+  Component,
+  EventEmitter, 
+  OnChanges, 
+  OnInit,
+  Output, 
+  SimpleChanges,
+  DoCheck, 
+  AfterContentChecked,
+  OnDestroy
+} from '@angular/core';
 import { Receipe } from './receipe.model';
 
 @Component({
@@ -6,7 +17,7 @@ import { Receipe } from './receipe.model';
   templateUrl: './receipe-list.component.html',
   styleUrls: ['./receipe-list.component.scss']
 })
-export class ReceipeListComponent implements OnInit {
+export class ReceipeListComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, OnDestroy {
  
 
   recepieList: Receipe[] = [
@@ -20,14 +31,36 @@ export class ReceipeListComponent implements OnInit {
 
   selectedReceipe: Receipe;
 
-  constructor() { }
+  constructor() {
+    console.log('constructor called');
+  }
+  ngOnDestroy(): void {
+    console.log('Destroyed');
+  }
+  ngAfterContentChecked(): void {
+    console.log('Method implemented ng after content checked');
+  }
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit inside');
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    console.log(changes);
+  }
 
   ngOnInit(): void {
+    console.log('ng onInit called');
   }
 
   showReceipe(recipe: Receipe){
    this.selectedReceipe = recipe;
   }
+
+  ngDoCheck(){
+    console.log('ng docheck called')
+  }
+
 
 
 
