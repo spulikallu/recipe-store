@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-7">
+    <ul class="list-group">
+      <app-receipe-item 
+      *ngFor="let receipeItem of recepieList" 
+      [receipe]="receipeItem" 
+      (displayRecipe)="showReceipe($event)"      
+      class="list-group-item"
+      >
+      </app-receipe-item>
+    </ul>
+  </div>
+  <div class="col-5">
+    <h2>Receipe Details</h2>
+    <app-receipe-detail 
+    *ngIf="selectedReceipe; else infoText"
+    [receipe]="selectedReceipe"
+    >
+    </app-receipe-detail>
+    <ng-template #infoText>
+      No receipe selected
+    </ng-template>
+  </div>
+</div>
