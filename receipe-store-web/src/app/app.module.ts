@@ -9,6 +9,8 @@ import { ReceipeDetailComponent } from './receipe-list/receipe-detail/receipe-de
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { IngredientComponent } from './shopping-list/ingredient/ingredient.component';
+import { BetterHighlightDirective } from './better-highlight.directive';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { IngredientComponent } from './shopping-list/ingredient/ingredient.compo
     ReceipeDetailComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    IngredientComponent
+    IngredientComponent,
+    BetterHighlightDirective,
+    DropdownDirective
   ],
   imports: [
     BrowserModule

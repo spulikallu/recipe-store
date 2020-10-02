@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { LoggingServiceService } from './logging-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [LoggingServiceService]
 })
 export class AppComponent {
   title = 'receipe-store-web';

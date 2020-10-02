@@ -1,11 +1,13 @@
 import { Component, ContentChild, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import {Input } from '@angular/core';
+import { LoggingServiceService } from 'src/app/logging-service.service';
 import { Receipe } from '../receipe.model';
 
 @Component({
   selector: 'app-receipe-item',
   templateUrl: './receipe-item.component.html',
   styleUrls: ['./receipe-item.component.scss']
+
 })
 export class ReceipeItemComponent implements OnInit {
   @Input() receipe: Receipe;
@@ -13,14 +15,17 @@ export class ReceipeItemComponent implements OnInit {
   @ViewChild('receipeRow', {static:true}) receipeRowDiv: ElementRef;
   @ContentChild('recipeRowName', {static:true}) recipeRowNameDiv: ElementRef;
  
-  constructor() { }
+  constructor(private logService: LoggingServiceService) {
+
+   }
 
   ngOnInit(): void {
   }
 
   receipeSelected(recipe: Receipe){
-    console.log('receipie selected');
+    this.logService.logStatus('receipie selected ****');
     this.displayRecipe.emit(recipe);
+    this.logService.statusUpdated.emit('clicked the receipe');
   }
 
   highlightItem(){

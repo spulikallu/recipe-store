@@ -11,11 +11,13 @@ import {
   OnDestroy
 } from '@angular/core';
 import { Receipe } from './receipe.model';
+import { LoggingServiceService } from '../logging-service.service';
 
 @Component({
   selector: 'app-receipe-list',
   templateUrl: './receipe-list.component.html',
-  styleUrls: ['./receipe-list.component.scss']
+  styleUrls: ['./receipe-list.component.scss'],
+  providers: [LoggingServiceService]
 })
 export class ReceipeListComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, OnDestroy {
  
@@ -31,7 +33,7 @@ export class ReceipeListComponent implements OnInit, OnChanges, DoCheck, AfterCo
 
   selectedReceipe: Receipe;
 
-  constructor() {
+  constructor(private loggingService: LoggingServiceService) {
     console.log('constructor called');
   }
   ngOnDestroy(): void {
@@ -50,7 +52,7 @@ export class ReceipeListComponent implements OnInit, OnChanges, DoCheck, AfterCo
   }
 
   ngOnInit(): void {
-    console.log('ng onInit called');
+    this.loggingService.logStatus("logstatus in init method");
   }
 
   showReceipe(recipe: Receipe){
